@@ -1,3 +1,5 @@
+# find two numbers in list that add to 2020, output the product of those two numbers
+
 import csv
 
 input = []
