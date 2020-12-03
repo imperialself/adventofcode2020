@@ -17,13 +17,14 @@ for x in map:
 # set these for later
 x, y = 0, 0
 collisions = 0
+width = len(matrix[0])
 
 while y < row:
 	if matrix[y][x] == '#':
 		collisions += 1
 	x += 3      # slope is right 3, down 1
 	y += 1
-	if x > 30:  # pattern repeats when you go off the edge
-		x -= 31 # subtract 31 because index 30 means 31 objects
+	if x > width-1:  # pattern repeats when you go off the edge
+		x -= width   # width-1 because the largest index is len-1
 
 print(f"Collisions: {collisions}")

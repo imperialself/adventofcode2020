@@ -6,32 +6,35 @@ with open('input') as file:
 
 # create 2d array
 matrix = []
-row = 0
+rows = 0
 
 for x in map:
 	matrix.append([])
 	for y in x:
-		matrix[row].append(y)
-	row += 1
+		matrix[rows].append(y)
+	rows += 1
 
 # initialize these for later
 collisions = 0
-collisionsArray = []
+results = []
+
+# set width since we have to know when to repeat
+width = len(matrix[0])
 
 # functionizing this to count the collisions on a given slope
 def collide(right,down):
 	print(f"Slope: {right}, {down}")
 	x, y = 0, 0
 	collisions = 0
-	while y < row:
+	while y < rows:
 		if matrix[y][x] == '#':
 			collisions += 1
 		x += right
 		y += down
-		if x > 30:   # pattern repeats when you go off the edge
-			x -= 31  # 31 because index 30 means 31 objects
+		if x > width-1:  # pattern repeats when you go off the edge
+			x -= width   # width-1 because the largest index is len-1
 	print(f"Collisions: {collisions}")
-	collisionsArray.append(collisions) # save the result for later
+	results.append(collisions) # save the result for later
 
 # Do multiple slopes this time
 # Right 1, down 1.
@@ -46,7 +49,7 @@ for slope in slopesArray:
 
 # find product of the collisions
 product = 1
-for n in collisionsArray:
+for n in results:
 	product = n * product
 
 print(f"Final product: {product}")
