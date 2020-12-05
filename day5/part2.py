@@ -6,7 +6,6 @@ boardingPasses = open('input').read().strip().split('\n')
 
 # First 7 characters, range 0-127 where F means keep lower hald and B means upper
 def getRow(p):
-	# global row
 	p = p[:7]
 	range = [0, 127]
 	for c in p:
@@ -19,7 +18,6 @@ def getRow(p):
 
 # Last three characters, range 0-7 where L means keep lower half and R means upper
 def getSeat(p):
-	# global seat
 	p = p[7:]
 	range = [0,7]
 	for c in p:
@@ -30,14 +28,13 @@ def getSeat(p):
 	seat = range[0]
 	return seat
 
-# Every seat also has a unique seat ID: multiply the row by 8, then add the column. In this example, the seat has ID 44 * 8 + 5 = 357.
+# Every seat also has a unique seat ID: multiply the row by 8, then add the column
 def getID(p):
 	global ids
 	row = getRow(p)
 	seat = getSeat(p)
 	id = row * 8 + seat
 	ids.append(id)
-
 
 # Create, populate, and sort the IDs array 
 ids = []
