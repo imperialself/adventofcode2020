@@ -13,7 +13,7 @@ for group in customsDump:
 # Start fresh
 yesCounts = []
 
-# Starts with full list of alphabet, iterate through each person and remove eve
+# Starts with full list of alphabet, iterate through each person and remove every letter not present
 def countYeses(c):
 	yeses = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 	for p in c:
