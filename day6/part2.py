@@ -15,17 +15,15 @@ yesCounts = []
 
 # Starts with whatever person 1 had, iterate through each person and remove every remaining letter not present
 def countYeses(c):
-	yeses = []
-	for l in c[0]:
-		yeses.append(l)					# Make list of first person's answers
+	uLetters = list(c[0])				# Start with whatever person 1 said yes to
 	for p in c:
 		for l in c[0]:					# More performant than looping through 26 letters every time
 			if l not in p:
 				try:					# This is going to fail if it's already been removed so we only "try"
-					yeses.remove(l)
+					uLetters.remove(l)
 				except ValueError:
 					pass
-	yesCounts.append(len(yeses))		# The length is a count of the remaining letters
+	yesCounts.append(len(uLetters))		# The length is a count of the remaining letters
 
 # Iterate through all groups and count their yeses
 for group in customsCleaned:
