@@ -1,5 +1,5 @@
 # Find the number of questions (letters) a group answered yes unanimously
-# Return sum of all groups' unanimous
+# Return sum of all groups' unanimous letters
 
 from string import ascii_lowercase
 
@@ -13,11 +13,13 @@ for group in customsDump:
 # Start fresh
 yesCounts = []
 
-# Starts with full list of alphabet, iterate through each person and remove every letter not present
+# Starts with whatever person 1 had, iterate through each person and remove every remaining letter not present
 def countYeses(c):
-	yeses = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+	yeses = []
+	for l in c[0]:
+		yeses.append(l)					# Make list of first person's answers
 	for p in c:
-		for l in ascii_lowercase:		# Convenient string is convenient
+		for l in c[0]:					# More performant than looping through 26 letters every time
 			if l not in p:
 				try:					# This is going to fail if it's already been removed so we only "try"
 					yeses.remove(l)
