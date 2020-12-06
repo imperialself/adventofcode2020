@@ -1,14 +1,10 @@
 # Find the number of questions (letters) a group answered yes unanimously
 # Return sum of all groups' unanimous letters
 
-from string import ascii_lowercase
-
-customsDump = open('input').read().strip().split('\n\n')
-
-# Make each group of people into a list, add to the Cleaned list
-customsCleaned = []
-for group in customsDump:
-	customsCleaned.append(group.splitlines())
+# Make each group of people into a list within the customs list
+customs = []
+for group in open('input').read().split('\n\n'):
+	customs.append(group.splitlines())
 
 # Start fresh
 yesCounts = []
@@ -26,7 +22,7 @@ def countYeses(c):
 	yesCounts.append(len(uLetters))		# The length is a count of the remaining letters
 
 # Iterate through all groups and count their yeses
-for group in customsCleaned:
+for group in customs:
 	countYeses(group)
 
 print(sum(yesCounts))
