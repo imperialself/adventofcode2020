@@ -1,4 +1,4 @@
-# Ingest a rule of bags containing other bags
+# Ingest list of rules for bags containing other bags
 # Then find out how many bags indirectly contain a given bag
 
 # Make a dict where bag is key, and list the bags that key contains as the value

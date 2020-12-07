@@ -1,5 +1,5 @@
-# Ingest a rule of bags containing other bags
-# Iterage through to see how many bags are nested in a given bag
+# Ingest list of rules for bags containing other bags
+# Iterate through to see how many bags are nested in a given bag
 
 # Make a dict where bag is key, and another dict containing children and their qty
 rules = {}
@@ -20,7 +20,7 @@ def countBags(bag):
 	if len(rules[bag]):					# Check if the bag has children
 		for child in rules[bag]:
 			# Add the qty of child bags, plus, the product of the grandchildren and the qty of that child, iteratively
-			# Ex: if bag contains 2 bags that contain 3 bags that contain 4 bags, sum = 2 + 2 * (3 + 3 * (4 + 4 * 0))
+			# Ex: if bag contains 2 bags containing 3 bags containing 4 bags containing 0 bags, sum = 2 + 2 * (3 + 3 * (4 + 4 * 0))
 			sum += rules[bag][child] + (rules[bag][child] * countBags(child))
 		return sum
 	else:								# Else, no new children so return 0
