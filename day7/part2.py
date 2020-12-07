@@ -10,7 +10,7 @@ for b in open('input').read().replace("bags","bag").split('\n'):
 	rules[bag] = {}									# Init the dict to dump child bags into
 	if contains[0] == 'no other bag':				# If no child bags, give it an empty dict
 		rules[bag] = {}
-	else:											# Else, rules[bag] = {'childbag1': qty, 'childbag2' = qty}
+	else:											# Else, rules[bag] = {'childbag1': qty, 'childbag2': qty}
 		for i in contains:
 			rules[bag][i[2:]] = int(i[0])
 
