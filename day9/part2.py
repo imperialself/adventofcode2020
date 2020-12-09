@@ -10,8 +10,6 @@ def checkSum(index,val):
 			if sum == val:
 				if i != index:
 					print(min(xmas[index:i])+max(xmas[index:i]))
-					return True				
-	return False
 				
 for i in range(len(xmas)):
 	checkSum(i,756008079)
