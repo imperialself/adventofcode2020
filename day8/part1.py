@@ -1,3 +1,7 @@
+# Run looping instructions and return accumulator sum right before
+# it starts its second loop
+# https://adventofcode.com/2020/day/8
+
 instructions = []
 for i in open('input').read().split('\n'):
 	instructions.append([i.split(" ")[0], int(i.split(" ")[1])])

@@ -1,4 +1,5 @@
-# find two numbers in list that add to 2020, output the product of those two numbers
+# Find two numbers in list that add to 2020, output the product of those two numbers
+# https://adventofcode.com/2020/day/1
 
 import csv
 

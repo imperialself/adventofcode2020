@@ -1,5 +1,6 @@
 # how many times do you run into `#` when traversing through a
 # horizontally repeating pattern at a given slope?
+# https://adventofcode.com/2020/day/3
 
 with open('input') as file:
     map = [line.rstrip('\n') for line in file]

@@ -1,5 +1,7 @@
 # Implement Binary Space Partitioning decoding algorithm to find each Seat ID
 # and return the highest ID
+# https://adventofcode.com/2020/day/5
+
 import math
 
 boardingPasses = open('input').read().strip().split('\n')

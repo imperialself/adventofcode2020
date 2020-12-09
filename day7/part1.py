@@ -1,5 +1,6 @@
 # Ingest list of rules for bags containing other bags
 # Then find out how many bags indirectly contain a given bag
+# https://adventofcode.com/2020/day/7
 
 # Make a dict where bag is key, and list the bags that key contains as the value
 rules = {}

@@ -1,5 +1,6 @@
 # Find the number of questions (letters) that anybody in the group said yes to
 # Find sum of all groups' yes sums
+# https://adventofcode.com/2020/day/6
 
 from string import ascii_lowercase
 

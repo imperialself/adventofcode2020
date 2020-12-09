@@ -1,5 +1,7 @@
 # Implement Binary Space Partitioning decoding algorithm to find each Seat ID
 # then sort and find the missing ID in the list
+# https://adventofcode.com/2020/day/5
+
 import math
 
 boardingPasses = open('input').read().strip().split('\n')

@@ -1,5 +1,6 @@
 # Find the number of questions (letters) a group answered yes unanimously
 # Return sum of all groups' unanimous letters
+# https://adventofcode.com/2020/day/6
 
 # Make each group of people into a list within the customs list
 customs = []

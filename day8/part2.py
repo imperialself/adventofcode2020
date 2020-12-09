@@ -1,3 +1,7 @@
+# Run looping instuction set and determine which "jmp" or "nop" step needs
+# to be swapped in order to stop looping
+# https://adventofcode.com/2020/day/8
+
 instructions = []
 for i in open('input').read().split('\n'):
 	instructions.append([i.split(" ")[0], int(i.split(" ")[1])])

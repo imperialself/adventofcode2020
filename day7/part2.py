@@ -1,5 +1,6 @@
 # Ingest list of rules for bags containing other bags
 # Iterate through to see how many bags are nested in a given bag
+# https://adventofcode.com/2020/day/7
 
 # Make a dict where bag is key, and another dict containing children and their qty
 rules = {}
