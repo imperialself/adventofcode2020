@@ -15,8 +15,8 @@ width = len(seatMap[0])
 def checkAdjacentCount(row,seat,ogMap):
 	# Set and visualize directions to look in
 	direction = [[-1,-1], [-1,0], [-1,1], \
-				 [0,-1], 		  [0,1], \
-				 [1,-1],  [1,0],  [1,1]]				     
+	            [0,-1],           [0,1], \
+	            [1,-1],   [1,0],  [1,1]]				     
 	occupiedCount = 0
 
 	# Check all directions until we find a seat
