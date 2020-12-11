@@ -11,6 +11,11 @@ for i in open('input').read().split('\n'):
 height = len(seatMap)
 width = len(seatMap[0])
 
+# Prints the map
+def printMap(map):
+	for row in map:
+		print(''.join(row))
+
 # Check seats in all cardinal directions, skipping the floor, return count of occupied seats
 def checkAdjacentCount(row,seat,ogMap):
 	# Set and visualize directions to look in
@@ -55,9 +60,10 @@ def iterate(ogMap):
 	# Check if stabilized, count occupied seats, and iterate again with newMap if unstable
 	ogCount = sum(x.count('#') for x in ogMap)
 	newCount = sum(x.count('#') for x in newMap)
+	printMap(ogMap)
 	if newMap == ogMap:
 		print(f"{ogCount} -> {newCount} occupied... Stabilized at {ogCount}!")
-	else: 
+	else:
 		print(f"{ogCount} -> {newCount} occupied... Unstable. Iterating!")
 		iterate(newMap)
 
