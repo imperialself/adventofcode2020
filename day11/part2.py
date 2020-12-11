@@ -29,7 +29,7 @@ def checkAdjacentCount(row,seat,ogMap):
 		seatFound = False
 		rowToCheck = row + i[0]		# Start moving in a direction
 		seatToCheck = seat + i[1]
-		# Run while inside map bounds and/or until seat found
+		# Run while inside map bounds or until seat found
 		while (0 <= seatToCheck < width) and \
 		      (0 <= rowToCheck < height) and \
 		      (seatFound == False):		
@@ -48,8 +48,8 @@ def iterate(ogMap):
 	newMap = copy.deepcopy(ogMap) # Need deepcopy here
 
 	# Iterate through all rows, seats, and apply any changes to newMap
-	for row in range(len(ogMap)):
-		for seat in range(len(ogMap[row])):
+	for row in range(height):
+		for seat in range(width):
 			# If seat is empty and 0 adjacent are occupied
 			if ogMap[row][seat] == "L" and checkAdjacentCount(row,seat,ogMap) == 0:
 				newMap[row][seat] = "#"
