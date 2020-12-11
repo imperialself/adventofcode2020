@@ -13,44 +13,53 @@ width = len(seatMap[0])
 
 # Check seats in all cardinal directions, skipping the floor, return count of occupied seats
 def checkAdjacentCount(row,seat,ogMap):
-	# Set directions to look in, and init occupiedCount
+	# Set and visualize directions to look in
 	direction = [[-1,-1], [-1,0], [-1,1], \
 				 [0,-1], 		  [0,1], \
 				 [1,-1],  [1,0],  [1,1]]				     
 	occupiedCount = 0
+
+	# Check all directions until we find a seat
 	for i in direction:
 		seatFound = False
-		rowToCheck = row + i[0]		# Add direction to row and seat vals
+		rowToCheck = row + i[0]		# Start moving in a direction
 		seatToCheck = seat + i[1]
+		# Run while inside map bounds and/or until seat found
 		while (0 <= seatToCheck < width) and \
-			  (0 <= rowToCheck < height) and \
-			  (seatFound == False):		# Run while inside bounds and/or until seatFound
-			if ogMap[rowToCheck][seatToCheck] == "#":
+		      (0 <= rowToCheck < height) and \
+		      (seatFound == False):		
+			if ogMap[rowToCheck][seatToCheck] == "#":	# If occupied
 				occupiedCount += 1
 				seatFound = True
-			elif ogMap[rowToCheck][seatToCheck] == "L":
+			elif ogMap[rowToCheck][seatToCheck] == "L":	# If unoccupied
 				seatFound = True
-			else:		# Else, keep moving in current direction til we find a seat
-				rowToCheck = rowToCheck + i[0]
-				seatToCheck = seatToCheck + i[1]
+			else:		# Else floor, so keep moving in current direction until seat is found
+				rowToCheck += i[0]
+				seatToCheck += i[1]
 	return occupiedCount
 
+# Run through seat map and make changes
 def iterate(ogMap):
-	newMap = copy.deepcopy(ogMap)
-	# Iterate through all rows, seats, and make any changes to newMap
+	newMap = copy.deepcopy(ogMap) # Need deepcopy here
+
+	# Iterate through all rows, seats, and apply any changes to newMap
 	for row in range(len(ogMap)):
 		for seat in range(len(ogMap[row])):
-			if ogMap[row][seat] == "L":
-				if checkAdjacentCount(row,seat,ogMap) == 0:
-					newMap[row][seat] = "#"
-			if ogMap[row][seat] == "#":
-				if checkAdjacentCount(row,seat,ogMap) >= 5:
-					newMap[row][seat] = "L"
-	# Check if we're reached parity, and iterate again if we haven't
+			# If seat is empty and 0 adjacent are occupied
+			if ogMap[row][seat] == "L" and checkAdjacentCount(row,seat,ogMap) == 0:
+				newMap[row][seat] = "#"
+			# If seat is occupied and 5 or more adjacent are occupied
+			if ogMap[row][seat] == "#" and checkAdjacentCount(row,seat,ogMap) >= 5:
+				newMap[row][seat] = "L"
+
+	# Check if stabilized, count occupied seats, and iterate again with newMap if unstable
+	ogCount = sum(x.count('#') for x in ogMap)
+	newCount = sum(x.count('#') for x in newMap)
 	if newMap == ogMap:
-		print("Success!")
-		print(sum(x.count('#') for x in ogMap))
+		print(f"{ogCount} -> {newCount} occupied... Stabilized at {ogCount}!")
 	else: 
+		print(f"{ogCount} -> {newCount} occupied... Unstable. Iterating!")
 		iterate(newMap)
 
+# Run program
 iterate(seatMap)
