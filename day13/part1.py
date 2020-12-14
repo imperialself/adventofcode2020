@@ -1,3 +1,6 @@
+# Ingest bus schedule and departure timestamp. Find bus that leaves closest to
+# your departure time, then find product of bus and minutes you have to wait
+# https://adventofcode.com/2020/day/13
 
 info = open('input').read().split('\n')
 
@@ -20,5 +23,5 @@ for bus in buses:
 
 print(buses)
 
-# Manually find lowest departure, then the corresponding ID
-
+# Manually find lowest departure value, then the corresponding ID
+# lol

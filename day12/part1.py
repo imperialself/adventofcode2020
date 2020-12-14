@@ -1,3 +1,6 @@
+# Move ship according to instructions, return the "manhattan distance" you travel
+# # https://adventofcode.com/2020/day/12
+
 instructions = []
 for i in open('input').read().split('\n'):
 	instructions.append([i[0],int(i[1:])])

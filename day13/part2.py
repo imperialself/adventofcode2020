@@ -1,26 +1,19 @@
-from functools import reduce
-import math
+# Find the first time value, where all buses will arrive in order at time + index (aka offset)
+# https://adventofcode.com/2020/day/13
 
 info = open('input').read().split('\n')
 
 badbuses = info[1].split(',')
 buses = []
-offsets = []
 for bus in badbuses:
-	if bus != 'x':
+	if bus != 'x':		# 'x' indexes aren't bound to a bus
 		buses.append([int(bus), int(badbuses.index(bus))])	# [Bus, minutes after t]
-		offsets.append(badbuses.index(bus))
 
-print(buses)
-
-time = 0
+time = buses[0][0]	# We can just start at the first bus
 interval = 1
-for bus in buses:
-	print(f"syncing bus {bus[0]}")
-	synced = False
-	while not synced:
+for bus,offset in buses:
+	while (time + offset) % bus != 0:	# Keep adding interval to time until we find a time that works
 		time += interval
-		if (time + bus[1]) % bus[0] == 0:
-			interval = interval * bus[0]
-			print(f"synced {bus[0]} (offset {bus[1]}) at {time}")
-			synced = True
+	interval *= bus					# Makes sure all previous busses will still work at new times
+	print(f"{time} works for {bus} and all previous busses")
+print(f"Final answer: {time}")
