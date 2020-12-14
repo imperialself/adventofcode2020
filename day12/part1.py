@@ -2,7 +2,6 @@ instructions = []
 for i in open('input').read().split('\n'):
 	instructions.append([i[0],int(i[1:])])
 
-# Store 
 move = {'N': [1,0], 'E':[0,1], 'S':[-1,0], 'W':[0,-1]}		# Modifiers one would make to x,y to move a direction
 compass = ['N', 'E', 'S', 'W']
 rotate = {'R':1, 'L':-1}

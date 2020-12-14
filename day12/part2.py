@@ -6,7 +6,6 @@ for i in open('input').read().split('\n'):
 
 move = {'N': [1,0], 'E':[0,1], 'S':[-1,0], 'W':[0,-1]}		# Modifiers one would make to x,y to move a direction
 compass = ['N', 'E', 'S', 'W']
-rotate = {'R':1, 'L':-1}
 shipX,shipY = 0, 0		# starts at 0,0
 wayX,wayY = 10,1		# starts at 10 east, 1 north
 
