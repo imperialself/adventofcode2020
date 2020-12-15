@@ -3,7 +3,7 @@
 
 # part 1: 2020
 # part 2: 30000000
-target = 2020 # nth iteration we want to know
+target = 30000000 # nth iteration we want to know
 
 # Initialize
 said = {}
@@ -12,7 +12,7 @@ starting = [2,0,1,7,4,14,18]	# The input given by AoC
 def takeTurn(turn):
 	global said,lastTurn
 
-	# If still in the starting numbers
+	# If still in the starting numbers, log their occurances
 	if turn < len(starting)+1:
 		said[starting[turn-1]] = [turn]
 		lastTurn = starting[-1]
@@ -29,6 +29,7 @@ def takeTurn(turn):
 		said[thisTurn] = [turn]	
 	else:
 		said[thisTurn].append(turn)
+		said[thisTurn] = said[thisTurn][-2:]	# Only need to keep last two times it was said
 	lastTurn = thisTurn		# Lets me keep iterating
 
 # take n=target turns defined at top:
