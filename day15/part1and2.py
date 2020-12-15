@@ -1,4 +1,5 @@
-# Find the nth number in series following rules about 
+# Find the nth number in series following rules
+# https://adventofcode.com/2020/day/15 
 
 # part 1: 2020
 # part 2: 30000000
