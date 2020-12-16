@@ -1,3 +1,9 @@
+# ingest list of rules, discard any nearby tickets that contain an invalid number
+# then figure out which index belongs to which field. And return product of my ticket's
+# "departure" fields
+
+# https://adventofcode.com/2020/day/16
+
 import copy
 
 input = open('input').read().split('\n\n')
