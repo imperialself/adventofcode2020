@@ -1,4 +1,4 @@
-# Flip elements in 4d grid on or off according to their neighbors
+# Flip elements in 3d grid on or off according to their neighbors
 # https://adventofcode.com/2020/day/17
 
 import copy
