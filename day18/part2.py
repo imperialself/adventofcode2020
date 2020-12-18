@@ -1,16 +1,9 @@
 # Ingest list of equations, and evaluate with + having priority over *
 # https://adventofcode.com/2020/day/18
 
-import operator
 import re
 
 expressions = open('input').read().split('\n')
-
-ops = {
-    "+": operator.add,
-    "-": operator.sub,
-    "*": operator.mul,
-}  
 
 innerParenPattern = re.compile(r'\(([\d+*\s]+)\)')
 additionPattern = re.compile(r'\d+\s\+\s\d+')
@@ -27,40 +20,19 @@ def paren(expression):
 			break
 	return expression
 
-# Look for +. Evaluate them, and replace them with their sum until no more +, then evaluate
+# Look for +. Evaluate them, and replace them with their eval until no more *, then evaluate
 def add(expression):
 	while True:
 		matches = additionPattern.findall(expression)
-		if len(matches)>0:
+		if len(matches)>0 and "*" in expression:	# if no * we can just eval
 			for match in matches:
-				expression = expression.replace(match, str(evaluate(match)),1)		# works 374/375 times. Grrr
+				expression = expression.replace(match, str(eval(match)),1)
 		else:
-			expression = evaluate(expression)
+			expression = eval(expression)
 			break
 	return expression
-
-# evaluates the expression given
-def evaluate(expression):
-	expression = expression.split(' ')
-	sum = 0
-	operate = ops['+']
-	for c in expression:
-		if c in ops:
-			operate = ops[c]
-		else: 
-			sum = operate(sum, int(c))
-	return sum
-
-# so uh, bug with line 149. Partway through the process.
-# pattern to replace: "7 + 7" incorrectly matches to "17 + 7"
-
-# 17 + 7 + 7 + 24505
-# replace 7 + 7 with 14
-# accidental result: 114 + 7 + 24505
-
-# hard coding the total-90 to offset this error until I figure it out
 
 total = 0
 for expression in expressions:
 	total += paren(expression)
-print(total-90)
+print(total)
