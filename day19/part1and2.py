@@ -3,14 +3,13 @@
 # https://adventofcode.com/2020/day/19
 
 import re
-from collections import defaultdict
 
 r = open('input').read().split('\n\n')[0].split('\n')
 messages = open('input').read().split('\n\n')[1].split('\n')
 
 rules = {}
 
-# 122: 86 1 | 99 20 becomes: {122: [['86', '1', '|', '99', '20']]}
+# 122: 86 1 | 99 20 becomes: {122: ['86', '1', '|', '99', '20']}
 for rule in r:
 	number = int(rule.split(':')[0])
 	sub = rule.split(': ')[1]
