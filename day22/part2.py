@@ -53,7 +53,7 @@ def game(p1,p2):
 	return checkWinner(p1,p2)
 
 
-gameWinner = game(p1,p2),
+gameWinner = game(p1,p2)
 
 if gameWinner == 1:
 	print(score(p1))
